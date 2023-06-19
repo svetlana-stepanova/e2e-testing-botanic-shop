@@ -1,4 +1,4 @@
-import { Product } from '../../../tests/testData/products';
+import { Product } from '../../../tests/testData/productNames';
 import { BaseComponent } from '../baseComponent';
 
 export class SearchModalWindowComponent extends BaseComponent {
