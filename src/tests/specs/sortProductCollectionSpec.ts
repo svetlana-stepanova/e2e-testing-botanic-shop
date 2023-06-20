@@ -4,7 +4,7 @@ import { sortedAscending, sortedDescending } from '../support/sortingArray';
 import { SortProductOptions } from '../testData/sortProductOptions';
 import { Wait } from '../testData/waitOptions';
 
-describe('Product collection', function () {
+describe('Sort product collection', function () {
   beforeEach(function () {
     homePage.open();
     homePage.header.getRandomSubcategory();
