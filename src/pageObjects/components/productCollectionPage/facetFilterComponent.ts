@@ -20,4 +20,12 @@ export class FacetFilterComponent extends BaseComponent {
 
     return cy.get('#SortBy').select(options[item]);
   }
+
+  get filterByPriceFromInput() {
+    return this.rootElement.find('#Filter-Price-GTE');
+  }
+
+  get filterByPriceToInput() {
+    return this.rootElement.find('#Filter-Price-LTE');
+  }
 }
