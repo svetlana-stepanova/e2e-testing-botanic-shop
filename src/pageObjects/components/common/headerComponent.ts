@@ -1,4 +1,5 @@
 import { getRandomElementOfArray } from '../../../tests/support/getRandomElementOfArray';
+import { CategoryName, SubcategoryName } from '../../../tests/testData/category,subcategoryName';
 import { BaseComponent } from '../baseComponent';
 
 export class HeaderComponent extends BaseComponent {
@@ -22,7 +23,11 @@ export class HeaderComponent extends BaseComponent {
     return this.rootElement.find('.header__menu-item');
   }
 
-  getSubcategoryList(category: string) {
+  get subcategoryList() {
+    return this.rootElement.find('.mega-menu__link--level-2[href^="/collections"]');
+  }
+
+  getSubcategoryListOfCategory(category: string) {
     return cy.get(category).parent().find('.mega-menu__link--level-2[href^="/collections"]');
   }
 
@@ -33,12 +38,20 @@ export class HeaderComponent extends BaseComponent {
       this.rootElement.find(category).click();
 
       if (category.hasAttribute('aria-expanded')) {
-        this.getSubcategoryList(category).then((list) => {
+        this.getSubcategoryListOfCategory(category).then((list) => {
           const subcategory = getRandomElementOfArray(list);
 
           this.rootElement.find(subcategory).click();
         });
       }
     });
+  }
+
+  categoryButton(categoryName: CategoryName) {
+    return this.categoryList.contains(categoryName, { matchCase: false });
+  }
+
+  getSubcategory(subcategoryName: SubcategoryName) {
+    return this.subcategoryList.contains(subcategoryName, { matchCase: false });
   }
 }
