@@ -4,3 +4,8 @@ export enum Product {
   Pot = 'POT',
   Pendant = 'PENDANT',
 }
+
+export const price = {
+  '0': 0,
+  30: 30,
+};
