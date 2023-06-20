@@ -30,6 +30,14 @@ class ProductCollectionPage extends BasePage {
     return this.elementsProductTitles.then(($text) => $text.text());
   }
 
+  get emptyCollectionMessageElement() {
+    return cy.get('#ProductGridContainer .collection--empty h2');
+  }
+
+  get resetFilterButton() {
+    return cy.get('[id^="Facet-2"] .facets__reset');
+  }
+
   checkElementsSortedByPrice(
     sortTypeFunction: typeof sortedAscending | typeof sortedDescending,
     elementsToSort: typeof this.productPrices | typeof this.productTitles
@@ -50,6 +58,12 @@ class ProductCollectionPage extends BasePage {
 
       cy.wrap(sortTypeFunction(arrayOfTitles));
     });
+  }
+
+  validateProductsFilteredByPrice(from: number, to: number) {
+    this.productPrices.then((text) =>
+      cy.wrap(convertToArrayOfPrices(text)).each((price) => cy.wrap(price).should('be.within', from, to))
+    );
   }
 }
 
