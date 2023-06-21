@@ -7,4 +7,7 @@ export const statusMessage = {
   get noProducts() {
     return 'No products found';
   },
+  get incorrectEmailOrPassword() {
+    return 'Incorrect email or password.';
+  },
 };

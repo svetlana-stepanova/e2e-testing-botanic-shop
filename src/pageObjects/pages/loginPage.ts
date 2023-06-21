@@ -17,6 +17,10 @@ class LoginPage extends BasePage {
     return cy.get('#customer_login>button');
   }
 
+  get errorMessageElement() {
+    return cy.get('.errors > ul > li');
+  }
+
   fillInLoginForm(email: string, password: string) {
     this.emailInput.type(email);
     this.passwordInput.type(password);
