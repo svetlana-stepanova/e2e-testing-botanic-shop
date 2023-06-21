@@ -6,6 +6,8 @@ export enum Product {
 }
 
 export const price = {
-  '0': 0,
+  0: 0,
+  15: 15,
+  25: 25,
   30: 30,
 };

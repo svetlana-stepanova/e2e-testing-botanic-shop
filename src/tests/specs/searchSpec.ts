@@ -1,6 +1,6 @@
 import homePage from '../../pageObjects/pages/homePage';
 import searchPage from '../../pageObjects/pages/searchPage';
-import { Product } from '../testData/productNames';
+import { Product } from '../testData/productOptions';
 import { statusMessage } from '../testData/statusMessage';
 
 describe('Search', function () {
