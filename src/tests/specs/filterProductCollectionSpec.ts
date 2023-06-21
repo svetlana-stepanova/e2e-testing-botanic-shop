@@ -27,4 +27,18 @@ describe('Filter product collection', function () {
 
     productCollectionPage.emptyCollectionMessageElement.should('contain.text', statusMessage.noProducts);
   });
+
+  it(`Should remove previous filter settings and set up filter from ${price[15]} to ${price[25]}`, function () {
+    productCollectionPage.facetFilter.filterByPriceButton.click();
+    productCollectionPage.facetFilter.filterByPriceFromInput.type(`${price[0]}`).wait(Wait.Minim);
+    productCollectionPage.facetFilter.filterByPriceToInput.type(`${price[30]}`).wait(Wait.Minim);
+
+    productCollectionPage.validateProductsFilteredByPrice(price[0], price[30]);
+
+    productCollectionPage.resetFilterButton.click().wait(Wait.Minim);
+    productCollectionPage.facetFilter.filterByPriceFromInput.type(`${price[15]}`).wait(Wait.Minim);
+    productCollectionPage.facetFilter.filterByPriceToInput.type(`${price[25]}`).wait(Wait.Minim);
+
+    productCollectionPage.validateProductsFilteredByPrice(price[15], price[25]);
+  });
 });
