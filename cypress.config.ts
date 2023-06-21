@@ -2,6 +2,8 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
+    viewportWidth: 1920,
+    viewportHeight: 1080,
     specPattern: ['src/tests/specs/**/*.ts'],
     supportFile: false,
     videosFolder: 'src/videos',
