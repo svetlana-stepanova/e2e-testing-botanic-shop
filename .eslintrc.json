@@ -17,5 +17,7 @@
     "sourceType": "module",
     "project": "tsconfig.json"
   },
-  "rules": {"prettier/prettier": "error"}
+  "rules": {
+    "prettier/prettier": "error",
+    "max-len": ["warn", { "code": 120 }]}
 }
