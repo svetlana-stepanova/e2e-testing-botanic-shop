@@ -1,3 +1,3 @@
 export enum Wait {
-  min = 1500,
+  Minim = 1500,
 }
