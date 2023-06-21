@@ -22,6 +22,10 @@ class SearchPage extends BasePage {
     return cy.get('a[id^="CardLink"]').invoke('slice', 0, 4);
   }
 
+  get firstProductOfResults() {
+    return cy.get('a[id^="CardLink"]').first();
+  }
+
   get noResultFoundElement() {
     return cy.get('p[role="status"]');
   }

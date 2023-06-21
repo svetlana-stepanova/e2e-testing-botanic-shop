@@ -1,4 +1,4 @@
-import { SortProductOptions } from '../../../tests/testData/sortProductOptions';
+import { FilterByAvailabilityOptions, SortProductOptions } from '../../../tests/testData/sort,filterProductOptions';
 import { BaseComponent } from '../baseComponent';
 
 export class FacetFilterComponent extends BaseComponent {
@@ -8,6 +8,19 @@ export class FacetFilterComponent extends BaseComponent {
 
   get filterByPriceButton() {
     return cy.get('[id^="Details-2"] > summary');
+  }
+
+  get filterByAvailabilityButton() {
+    return cy.get('[id^="Details-1"] > summary');
+  }
+
+  filterByAvailabilityCheckbox(item: FilterByAvailabilityOptions) {
+    const options = {
+      INSTOCK: '[id="Filter-filter.v.availability-1"]',
+      OUTOFSTOCK: '[id="Filter-filter.v.availability-2"]',
+    };
+
+    return cy.get(options[item]);
   }
 
   sortByOptions(item: SortProductOptions) {
