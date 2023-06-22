@@ -2,9 +2,11 @@ import { FacetFilterComponent } from '../components/productCollectionPage/facetF
 import { BasePage } from './basePage';
 import { sortedAscending, sortedDescending } from '../../tests/support/sortingArray';
 import { convertToArrayOfPrices, convertToArrayOfTitles } from '../../tests/support/convertToArray';
+import { CartNotificationComponent } from '../components/productPage/cartNotificationComponent';
 
 class ProductCollectionPage extends BasePage {
   facetFilter = new FacetFilterComponent();
+  cartNotificationModalWindow = new CartNotificationComponent();
 
   constructor() {
     super('https://rbgeshop.org/collections', 'Collections');
@@ -36,6 +38,10 @@ class ProductCollectionPage extends BasePage {
 
   get resetFilterButton() {
     return cy.get('[id^="Facet-2"] .facets__reset');
+  }
+
+  get addToCartButtons() {
+    return cy.get('button[id^="quick-add"]');
   }
 
   checkElementsSortedByPrice(
