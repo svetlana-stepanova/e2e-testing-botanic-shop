@@ -1,7 +1,7 @@
 import homePage from '../../pageObjects/pages/homePage';
 import productCollectionPage from '../../pageObjects/pages/productCollectionPage';
 import { sortedAscending, sortedDescending } from '../support/sortingArray';
-import { SortProductOptions } from '../testData/sortProductOptions';
+import { SortProductOptions } from '../testData/sort,filterProductOptions';
 import { Wait } from '../testData/waitOptions';
 
 describe('Sort product collection', function () {

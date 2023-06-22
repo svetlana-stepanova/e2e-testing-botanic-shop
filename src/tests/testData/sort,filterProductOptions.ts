@@ -4,3 +4,8 @@ export enum SortProductOptions {
   AlphabetAscending = 'ALPHABETASCENDING',
   AlphabetDescending = 'ALPHABETDESCENDING',
 }
+
+export enum FilterByAvailabilityOptions {
+  InStock = 'INSTOCK',
+  OutOfStock = 'OUTOFSTOCK',
+}
