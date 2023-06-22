@@ -44,22 +44,16 @@ class ProductCollectionPage extends BasePage {
     return cy.get('button[id^="quick-add"]');
   }
 
-  checkElementsSortedByPrice(
-    sortTypeFunction: typeof sortedAscending | typeof sortedDescending,
-    elementsToSort: typeof this.productPrices | typeof this.productTitles
-  ) {
-    return elementsToSort.then((elements) => {
+  checkElementsSortedByPrice(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
+    return this.productPrices.then((elements) => {
       const arrayOfPrices = convertToArrayOfPrices(elements);
 
       cy.wrap(sortTypeFunction(arrayOfPrices));
     });
   }
 
-  checkElementsSortedByAlphabet(
-    sortTypeFunction: typeof sortedAscending | typeof sortedDescending,
-    elementsToSort: typeof this.productPrices | typeof this.productTitles
-  ) {
-    return elementsToSort.then((elements) => {
+  checkElementsSortedByAlphabet(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
+    return this.productTitles.then((elements) => {
       const arrayOfTitles = convertToArrayOfTitles(elements);
 
       cy.wrap(sortTypeFunction(arrayOfTitles));

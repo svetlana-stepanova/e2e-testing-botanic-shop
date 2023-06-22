@@ -13,32 +13,24 @@ describe('Sort product collection', function () {
   it('Should sort products by price from low to high', function () {
     productCollectionPage.facetFilter.sortByOptions(SortProductOptions.PriceAscending).wait(Wait.Minim);
 
-    productCollectionPage
-      .checkElementsSortedByPrice(sortedAscending, productCollectionPage.productPrices)
-      .should('be.true');
+    productCollectionPage.checkElementsSortedByPrice(sortedAscending).should('be.true');
   });
 
   it('Should sort products by price from high to low', function () {
     productCollectionPage.facetFilter.sortByOptions(SortProductOptions.PriceDescending).wait(Wait.Minim);
 
-    productCollectionPage
-      .checkElementsSortedByPrice(sortedDescending, productCollectionPage.productPrices)
-      .should('be.true');
+    productCollectionPage.checkElementsSortedByPrice(sortedDescending).should('be.true');
   });
 
   it('Should sort products by alphabet from A to Z', function () {
     productCollectionPage.facetFilter.sortByOptions(SortProductOptions.AlphabetAscending).wait(Wait.Minim);
 
-    productCollectionPage
-      .checkElementsSortedByAlphabet(sortedAscending, productCollectionPage.productTitles)
-      .should('be.true');
+    productCollectionPage.checkElementsSortedByAlphabet(sortedAscending).should('be.true');
   });
 
   it('Should sort products by alphabet from Z to A', function () {
     productCollectionPage.facetFilter.sortByOptions(SortProductOptions.AlphabetDescending).wait(Wait.Minim);
 
-    productCollectionPage
-      .checkElementsSortedByAlphabet(sortedDescending, productCollectionPage.productTitles)
-      .should('be.true');
+    productCollectionPage.checkElementsSortedByAlphabet(sortedDescending).should('be.true');
   });
 });
