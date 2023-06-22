@@ -3,6 +3,7 @@ export enum Product {
   Iphone = 'IPHONE',
   Pot = 'POT',
   Pendant = 'PENDANT',
+  Book = 'BOOK',
 }
 
 export const price = {
