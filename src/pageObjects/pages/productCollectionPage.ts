@@ -24,10 +24,6 @@ class ProductCollectionPage extends BasePage {
     return cy.get('.card__heading.h5 > a');
   }
 
-  get productPrices() {
-    return this.elementsProductPrices.then(($text) => $text.text());
-  }
-
   get productTitles() {
     return this.elementsProductTitles.then(($text) => $text.text());
   }
@@ -45,11 +41,15 @@ class ProductCollectionPage extends BasePage {
   }
 
   checkElementsSortedByPrice(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
-    return this.productPrices.then((elements) => {
-      const arrayOfPrices = convertToArrayOfPrices(elements);
+    return this.elementsProductPrices
+      .then((elements) => {
+        const arrayOfPrices = convertToArrayOfPrices(cy.wrap(elements));
 
-      cy.wrap(sortTypeFunction(arrayOfPrices));
-    });
+        return cy.wrap(arrayOfPrices);
+      })
+      .then((arrayOfPrices) => {
+        return cy.wrap(sortTypeFunction(arrayOfPrices));
+      });
   }
 
   checkElementsSortedByAlphabet(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
@@ -61,8 +61,8 @@ class ProductCollectionPage extends BasePage {
   }
 
   validateProductsFilteredByPrice(from: number, to: number) {
-    this.productPrices.then((text) =>
-      cy.wrap(convertToArrayOfPrices(text)).each((price) => cy.wrap(price).should('be.within', from, to))
+    this.elementsProductPrices.then((elements) =>
+      cy.wrap(convertToArrayOfPrices(cy.wrap(elements))).each((price) => cy.wrap(price).should('be.within', from, to))
     );
   }
 }
