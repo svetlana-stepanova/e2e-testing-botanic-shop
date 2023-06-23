@@ -40,7 +40,7 @@ class ProductCollectionPage extends BasePage {
     return cy.get('button[id^="quick-add"]');
   }
 
-  checkElementsSortedByPrice(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
+  checkProductsSortedByPrice(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
     return this.elementsProductPrices
       .then((elements) => {
         const arrayOfPrices = convertToArrayOfPrices(cy.wrap(elements));
@@ -52,7 +52,7 @@ class ProductCollectionPage extends BasePage {
       });
   }
 
-  checkElementsSortedByAlphabet(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
+  checkProductsSortedByAlphabet(sortTypeFunction: typeof sortedAscending | typeof sortedDescending) {
     return this.productTitles.then((elements) => {
       const arrayOfTitles = convertToArrayOfTitles(elements);
 
