@@ -1,5 +1,4 @@
-import homePage from '../../pageObjects/pages/homePage';
-import searchPage from '../../pageObjects/pages/searchPage';
+import { homePage, searchPage } from '../../pageObjects/pages/index';
 import { Product } from '../testData/productOptions';
 import { statusMessage } from '../testData/statusMessage';
 

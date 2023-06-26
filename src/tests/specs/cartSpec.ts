@@ -1,8 +1,4 @@
-import cartPage from '../../pageObjects/pages/cartPage';
-import homePage from '../../pageObjects/pages/homePage';
-import productCollectionPage from '../../pageObjects/pages/productCollectionPage';
-import productPage from '../../pageObjects/pages/productPage';
-import searchPage from '../../pageObjects/pages/searchPage';
+import { homePage, searchPage, productPage, productCollectionPage, cartPage } from '../../pageObjects/pages';
 import { CategoryName, SubcategoryName } from '../testData/category,subcategoryName';
 import { Product, quantity } from '../testData/productOptions';
 import { FilterByAvailabilityOptions } from '../testData/sort,filterProductOptions';

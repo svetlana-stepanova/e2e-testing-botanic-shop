@@ -1,5 +1,4 @@
-import accountPage from '../../pageObjects/pages/accountPage';
-import loginPage from '../../pageObjects/pages/loginPage';
+import { accountPage, loginPage } from '../../pageObjects/pages/index';
 import { loginData } from '../testData/loginData';
 import { statusMessage } from '../testData/statusMessage';
 

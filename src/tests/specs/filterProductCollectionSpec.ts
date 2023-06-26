@@ -1,5 +1,4 @@
-import homePage from '../../pageObjects/pages/homePage';
-import productCollectionPage from '../../pageObjects/pages/productCollectionPage';
+import { homePage, productCollectionPage } from '../../pageObjects/pages/index';
 import { CategoryName, SubcategoryName } from '../testData/category,subcategoryName';
 import { price } from '../testData/productOptions';
 import { statusMessage } from '../testData/statusMessage';
