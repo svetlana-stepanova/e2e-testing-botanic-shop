@@ -12,3 +12,8 @@ export const price = {
   25: 25,
   30: 30,
 };
+
+export const quantity = {
+  2: '2',
+  0: '0',
+};

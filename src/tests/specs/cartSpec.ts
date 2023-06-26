@@ -4,7 +4,7 @@ import productCollectionPage from '../../pageObjects/pages/productCollectionPage
 import productPage from '../../pageObjects/pages/productPage';
 import searchPage from '../../pageObjects/pages/searchPage';
 import { CategoryName, SubcategoryName } from '../testData/category,subcategoryName';
-import { Product } from '../testData/productOptions';
+import { Product, quantity } from '../testData/productOptions';
 import { FilterByAvailabilityOptions } from '../testData/sort,filterProductOptions';
 import { Wait } from '../testData/waitOptions';
 
@@ -61,9 +61,47 @@ describe('Cart', function () {
     homePage.searchModalWindowComponent.findProduct(Product.Pot);
     searchPage.firstProductOfResults.click();
     productPage.addToCartButton.click();
-    productCollectionPage.cartNotificationModalWindow.viewMyCartButton.click();
+    productPage.cartNotificationModalWindow.viewMyCartButton.click();
 
     cartPage.priceElements.should('have.length', 2);
     cartPage.validateSumPricesInCart();
+  });
+
+  it('Should remove product from the cart', function () {
+    homePage.header.searchButton.click();
+    homePage.searchModalWindowComponent.findProduct(Product.Book);
+    searchPage.firstProductOfResults.click();
+    productPage.addToCartButton.click();
+    productPage.cartNotificationModalWindow.viewMyCartButton.click();
+
+    cartPage.cartItemsTable.should('be.visible');
+
+    cartPage.removeButtons.first().click().wait(Wait.Minim);
+
+    cartPage.cartItemsTable.should('not.exist');
+    cartPage.emptyCartText.should('be.visible');
+  });
+
+  it(`Should set the number of product in the cart ${quantity[2]} and display correct total`, function () {
+    homePage.header.searchButton.click();
+    homePage.searchModalWindowComponent.findProduct(Product.Book);
+    searchPage.firstProductOfResults.click();
+    productPage.addToCartButton.click();
+    productPage.cartNotificationModalWindow.viewMyCartButton.click();
+
+    cartPage.validateTotalChangesWithQuantity(quantity[2]);
+  });
+
+  it(`Should set the number of product in the cart ${quantity[0]} and remove it`, function () {
+    homePage.header.searchButton.click();
+    homePage.searchModalWindowComponent.findProduct(Product.Book);
+    searchPage.firstProductOfResults.click();
+    productPage.addToCartButton.click();
+    productPage.cartNotificationModalWindow.viewMyCartButton.click();
+    cartPage.quantityInputs.clear();
+    cartPage.quantityInputs.type(quantity[0]);
+
+    cartPage.cartItemsTable.should('not.exist');
+    cartPage.emptyCartText.should('be.visible');
   });
 });
