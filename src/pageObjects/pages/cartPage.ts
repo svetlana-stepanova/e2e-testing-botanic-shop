@@ -1,5 +1,6 @@
 import { convertToArrayOfPrices } from '../../tests/support/convertToArray';
 import { sumElementsInArray } from '../../tests/support/sumElementsInArray';
+import { Wait } from '../../tests/testData/waitOptions';
 import { BasePage } from './basePage';
 
 class CartPage extends BasePage {
@@ -19,6 +20,22 @@ class CartPage extends BasePage {
     return cy.get('.totals__subtotal-value');
   }
 
+  get removeButtons() {
+    return cy.get('cart-remove-button[id^="Remove"]');
+  }
+
+  get quantityInputs() {
+    return cy.get('.quantity__input');
+  }
+
+  get emptyCartText() {
+    return cy.get('.cart__empty-text');
+  }
+
+  get checkoutButton() {
+    return cy.get('button#checkout');
+  }
+
   validateSumPricesInCart() {
     return this.priceElements
       .then((elements) => {
@@ -30,6 +47,34 @@ class CartPage extends BasePage {
         const sumOfPrices = sumElementsInArray(arrayOfPrices);
 
         this.subtotalElement.should('include.text', sumOfPrices);
+      });
+  }
+
+  validateTotalChangesWithQuantity(quantity: string) {
+    return this.priceElements
+      .then((elements) => {
+        const arrayOfPrice = convertToArrayOfPrices(cy.wrap(elements));
+
+        return cy.wrap(arrayOfPrice);
+      })
+      .then((arrayOfPrice) => {
+        return cy.wrap(Number([...arrayOfPrice]));
+      })
+      .then((initialPrice) => {
+        this.quantityInputs.clear();
+        this.quantityInputs.type(quantity).wait(Wait.Minim);
+        this.priceElements
+          .then((elements) => {
+            const arrayOfPrice = convertToArrayOfPrices(cy.wrap(elements));
+
+            return cy.wrap(arrayOfPrice);
+          })
+          .then((arrayOfPrice) => {
+            return cy.wrap(Number([...arrayOfPrice]));
+          })
+          .then((changedPrice) => {
+            cy.wrap(initialPrice * Number(quantity) === changedPrice).should('be.true');
+          });
       });
   }
 }
