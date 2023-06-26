@@ -51,4 +51,19 @@ describe('Cart', function () {
 
     productCollectionPage.addToCartButtons.first().should('be.disabled');
   });
+
+  it('Should add to the cart two products and display the correct sum in subtotal field', function () {
+    homePage.header.searchButton.click();
+    homePage.searchModalWindowComponent.findProduct(Product.Book);
+    searchPage.firstProductOfResults.click();
+    productPage.addToCartButton.click();
+    homePage.header.searchButton.click();
+    homePage.searchModalWindowComponent.findProduct(Product.Pot);
+    searchPage.firstProductOfResults.click();
+    productPage.addToCartButton.click();
+    productCollectionPage.cartNotificationModalWindow.viewMyCartButton.click();
+
+    cartPage.priceElements.should('have.length', 2);
+    cartPage.validateSumPricesInCart();
+  });
 });
