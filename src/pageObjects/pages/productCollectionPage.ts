@@ -9,7 +9,7 @@ class ProductCollectionPage extends BasePage {
   cartNotificationModalWindow = new CartNotificationComponent();
 
   constructor() {
-    super('https://rbgeshop.org/collections', 'Collections');
+    super('/collections', 'Collections');
   }
 
   get productList() {

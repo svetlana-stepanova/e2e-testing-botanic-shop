@@ -2,7 +2,7 @@ import { BasePage } from './basePage';
 
 class AccountPage extends BasePage {
   constructor() {
-    super('https://rbgeshop.org/account', 'Account – The Botanics Shop at Royal Botanic Garden Edinburgh');
+    super('/account', 'Account – The Botanics Shop at Royal Botanic Garden Edinburgh');
   }
 
   get accountDetailsSection() {

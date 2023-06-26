@@ -5,7 +5,7 @@ import { BasePage } from './basePage';
 
 class CartPage extends BasePage {
   constructor() {
-    super('https://rbgeshop.org/cart', 'Your Shopping Cart');
+    super('/cart', 'Your Shopping Cart');
   }
 
   get cartItemsTable() {

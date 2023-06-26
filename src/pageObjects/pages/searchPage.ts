@@ -3,7 +3,7 @@ import { BasePage } from './basePage';
 
 class SearchPage extends BasePage {
   constructor() {
-    super('https://rbgeshop.org/search', 'Search');
+    super('/search', 'Search');
   }
 
   get searchInput() {

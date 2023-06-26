@@ -2,7 +2,7 @@ import { BasePage } from './basePage';
 
 class LoginPage extends BasePage {
   constructor() {
-    super('https://rbgeshop.org/account/login', 'Account – The Botanics Shop at Royal Botanic Garden Edinburgh');
+    super('/account/login', 'Account – The Botanics Shop at Royal Botanic Garden Edinburgh');
   }
 
   get emailInput() {

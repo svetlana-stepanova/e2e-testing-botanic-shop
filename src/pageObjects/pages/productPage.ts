@@ -5,7 +5,7 @@ class ProductPage extends BasePage {
   cartNotificationModalWindow = new CartNotificationComponent();
 
   constructor() {
-    super('https://rbgeshop.org/products/', '');
+    super('/products/', '');
   }
 
   get addToCartButton() {

@@ -19,7 +19,7 @@ describe('Cart', function () {
 
     productPage.cartNotificationModalWindow.viewMyCartButton.click();
 
-    cy.url().should('eq', cartPage.url);
+    cy.title().should('contain', cartPage.title);
     cartPage.cartItemsTable.should('be.visible');
   });
 
