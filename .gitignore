@@ -1,4 +1,5 @@
 node_modules
-src/videos
-src/screenshots
-src/downloads
+cypress/videos
+cypress/screenshots
+cypress/downloads
+cypress/reports

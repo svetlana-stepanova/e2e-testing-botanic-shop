@@ -7,10 +7,7 @@ export abstract class BasePage {
   footer = new FooterComponent();
   searchModalWindowComponent = new SearchModalWindowComponent();
 
-  constructor(public url: string, public title: string) {
-    this.url = url;
-    this.title = title;
-  }
+  constructor(public url: string, public title: string) {}
 
   open() {
     return cy.visit(this.url);

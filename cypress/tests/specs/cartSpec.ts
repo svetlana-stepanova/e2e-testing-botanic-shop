@@ -9,7 +9,7 @@ describe('Cart', function () {
     homePage.open();
   });
 
-  it('Should find product through the search, add to the cart from product page', function () {
+  it.only('Should find product through the search, add to the cart from product page', function () {
     homePage.header.searchButton.click();
     homePage.searchModalWindowComponent.findProduct(Product.Book);
     searchPage.firstProductOfResults.click();
